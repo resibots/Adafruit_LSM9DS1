@@ -155,7 +155,7 @@ public:
       magData;         ///< Last read magnetometer data will be available here
   int16_t temperature; ///< Last read temperzture data will be available here
 
-  bool begin(void);
+  bool begin(uint8_t address_accelgyro = LSM9DS1_ADDRESS_ACCELGYRO, uint8_t address_mag = LSM9DS1_ADDRESS_MAG);
   void read(void);
   void readAccel(void);
   void readGyro(void);

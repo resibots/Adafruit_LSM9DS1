@@ -85,15 +85,15 @@ Adafruit_LSM9DS1::Adafruit_LSM9DS1(int8_t sclk, int8_t smiso, int8_t smosi,
     @returns True if both subsensors were detected on the desired interface
 */
 /**************************************************************************/
-bool Adafruit_LSM9DS1::begin() {
+bool Adafruit_LSM9DS1::begin(uint8_t address_accelgyro, uint8_t address_mag) {
   if (_wire) {
     // I2C
     if (i2c_dev)
       delete i2c_dev;
-    i2c_dev = new Adafruit_I2CDevice(LSM9DS1_ADDRESS_ACCELGYRO, _wire);
+    i2c_dev = new Adafruit_I2CDevice(address_accelgyro, _wire);
     if (!i2c_dev->begin())
       return false;
-    if (!_magSensor.begin_I2C(LSM9DS1_ADDRESS_MAG, _wire))
+    if (!_magSensor.begin_I2C(address_mag, _wire))
       return false;
   } else {
     // SPI
